@@ -20,3 +20,15 @@ const tooltips = {
     email: "Enter email address",
     comments: "Share your honest feedback"
 };
+[usernameInput, emailInput, commentsInput].forEach(input => {
+    input.addEventListener("mouseover", () => {
+        const tip = document.createElement("span");
+        tip.className = "tooltip";
+        tip.textContent = tooltips [input.id];
+        input.parentNode.appendChild(tip);
+    });
+    input.addEventListener("mouseout", () =>{
+        const tip = input.parentNode.querySelector(".tooltip");
+        if (tip) tip.remove();
+    });
+});
