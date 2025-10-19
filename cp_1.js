@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded"), () => {
     const form = document.querySelector("form");
     const feedbackDisplay = document.getElementById("feedback-display");
 
+
 // Character Count
 const charCount = document.createElement("div");
 commentsInput.parentNode.insertBefore (charCount, commentsInput.nextSibling);
@@ -32,3 +33,35 @@ const tooltips = {
         if (tip) tip.remove();
     });
 });
+
+//Submission
+form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    let valid = true;
+
+    [usernameInput, emailInput, commentsInput],forEach(input =>{
+        const error = input.parentNode.querySelector(".error");
+        if (error) error.remove();
+
+        if (!input.value.trim()) {
+            valid = false;
+            const msg = document.createElement("div");
+            msg.className = "error";
+            msg.textContent = `${input.previousElementSibling.textContent} is required.`;
+            input.parentNode.appendChild(msg);
+        }
+    });
+         if (valid) {
+        const entry = document.createElement("div");
+        entry.className = "feedback Entry";
+        entry.innerHTML = `
+        <strong>${usernameInput.value}</strong> (${emailInput.value}) said:
+        <br>
+        <em>${commentsInput.value}</em>
+        <hr>
+        `;
+        feedbackDisplay.appendChild (entry);
+        form.reset();
+        charCount.textContent = "";
+    }
+})

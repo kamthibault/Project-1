@@ -1,0 +1,32 @@
+.tooltip {
+    display: inline-block;
+    background: navy;
+    font-family: 'Times New Roman', Times, serif;
+    color: white;
+    font-size: 15px
+}
+
+body {
+background-color: rgb(53, 85, 154);
+text-align: center;
+size: 15px;
+color: aliceblue;
+padding: 10px;
+}
+
+input[type=text] {
+background-color: rgb(222, 217, 217);
+}
+
+input[type=email] {
+    background-color:  rgb(222, 217, 217);   
+}
+
+
+textarea {
+    background-color:  rgb(222, 217, 217);
+}
+
+button {
+    background-color: gold
+}
